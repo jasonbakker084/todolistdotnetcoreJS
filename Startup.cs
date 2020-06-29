@@ -28,7 +28,7 @@ namespace ToDoApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<TodoContext>(opt =>
-                opt.UseSqlServer("TodoList"));
+                opt.UseInMemoryDatabase("TodoList"));
             services.AddControllers();
         }
 
@@ -39,6 +39,10 @@ namespace ToDoApi
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseDefaultFiles();
+            
+            app.UseStaticFiles();
 
             app.UseHttpsRedirection();
 
